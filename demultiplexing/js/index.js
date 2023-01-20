@@ -1,8 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+
+    var optionalArguments = document.querySelectorAll('#optional_arguments');
+    // optionalArguments.style.display = 'block';
+    for (var i = 0; i < optionalArguments.length; i++) {
+        var options = optionalArguments[i];
+        options.style.display = "none";
+    }
     // var options = document.getElementById('optional_arguments');
-    var options = document.getElementById('optional_arguments');
-    options.style.display = "none";
+    // document.getElementById('optional_arguments').style.display = 'none';
+    // options.style.display = "none";
     // clone the fasta form if the click the button 
     // document.getElementById("add_more").addEventListener("click",function(){
     //     var original = document.getElementById("fasta_forms");
@@ -70,14 +77,14 @@ document.addEventListener("DOMContentLoaded", function () {
     // }
 })
 
-function display_options() {
+// function display_options() {
 
-    if (options.style.display === "none") {
-        options.style.display = "block";
-    } else {
-        options.style.display = "none";
-    }
-}
+//     if (options.style.display === "none") {
+//         options.style.display = "block";
+//     } else {
+//         options.style.display = "none";
+//     }
+// }
 
 //solo funciona con una
 // function showHide() {
@@ -90,6 +97,7 @@ function display_options() {
 // }
 
 function showHide() {
+    // var optionalArguments = document.getElementsByClassName("optional_arguments")
     var optionalArguments = document.querySelectorAll('#optional_arguments');
     for (var i = 0; i < optionalArguments.length; i++) {
         var options = optionalArguments[i];
