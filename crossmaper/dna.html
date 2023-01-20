@@ -41,22 +41,23 @@
             <div class="container text-center">
                 <div class="row g-3 row-cols-4">
                     <div class="col">
-                        <label  class="col-form-label" for="fastaq">Fastaq</label>
+                        <label class="col-form-label" for="fastaq">Fastaq</label>
                     </div>
                     <div class="col">
                         <input class="form-control" type="text" id="fastaq" value="none">
                     </div>
                     <div class="col">
-                        <label  class="col-form-label" for="genome_name">Genome Name</label>
+                        <label class="col-form-label" for="genome_name">Genome Name</label>
                     </div>
                     <div class="col">
                         <input class="form-control" type="text" id="genome_name" value="none">
                     </div>
                     <div class="col">
-                        <label  class="col-form-label" for="read_length">Read Length</label>
+                        <label class="col-form-label" for="read_length">Read Length</label>
                     </div>
                     <div class="col">
-                        <input class="form-control" type="number" id="read_length" list="read_length_options" value="50">
+                        <input class="form-control" type="number" id="read_length" list="read_length_options"
+                            value="50">
                         <datalist id="read_length_options">
                             <option selected>50</option>
                             <option>75</option>
@@ -67,24 +68,27 @@
                         </datalist>
                     </div>
                     <div class="col">
-                        <label  class="col-form-label" for="read_configuration">Read configuration</label>
+                        <label class="col-form-label" for="read_configuration">Read configuration</label>
                     </div>
                     <div class="col">
-                        <select name="select" class="form-select" id="read_configuration" >
-                            <option value="single-end"  selected>SE</option>
+                        <select name="select" class="form-select" id="read_configuration">
+                            <option value="single-end" selected>SE</option>
                             <option value="paired-end">PE</option>
                             <option value="both">Both</option>
                         </select>
                     </div>
                     <div class="col">
-                        <label  class="col-form-label" for="number_of_reads">Number of reads</label>
+                        <label class="col-form-label" for="number_of_reads">Number of reads</label>
                     </div>
                     <div class="col">
                         <input class="form-control" type="number" id="number_of_reads" value="none">
                     </div>
                     <div class="col">
-                        <button type="button" class="btn btn-outline-secondary btn-sm">Optional
+                        <button type="button" class="btn btn-outline-secondary">Optional
                             arguements</button>
+                    </div>
+                    <div class="col">
+                        <p> </p>
                     </div>
                 </div>
             </div>
