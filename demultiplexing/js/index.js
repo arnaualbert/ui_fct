@@ -79,16 +79,28 @@ function display_options() {
     }
 }
 
+//solo funciona con una
+// function showHide() {
+//     var optionalArguments = document.getElementById('optional_arguments');
+//     if (optionalArguments.style.display === "none") {
+//         optionalArguments.style.display = "block";
+//     } else {
+//         optionalArguments.style.display = "none";
+//     }
+// }
 
 function showHide() {
-    var optionalArguments = document.getElementById('optional_arguments');
-    if (optionalArguments.style.display === "none") {
-        optionalArguments.style.display = "block";
-    } else {
-        optionalArguments.style.display = "none";
+    var optionalArguments = document.querySelectorAll('#optional_arguments');
+    for (var i = 0; i < optionalArguments.length; i++) {
+        var options = optionalArguments[i];
+
+        if (options.style.display === "none") {
+            options.style.display = "block";
+        } else {
+            options.style.display = "none";
+        }
     }
 }
-
 
 // function showHide() {
 //     var optionalArguments = document.querySelectorAll('.optional_arguments');
