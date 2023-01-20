@@ -33,6 +33,65 @@
             </div>
         </div>
     </nav>
+    <br><br>
+    <div id="forms_dna">
+        <form id="form_dna">
+            <div class="container text-center">
+                <div class="row g-3 row-cols-4">
+                    <div class="col">
+                        <label class="col-form-label" for="fastaq">Fastaq</label>
+                    </div>
+                    <div class="col">
+                        <input class="form-control" type="text" id="fastaq" value="none">
+                    </div>
+                    <div class="col">
+                        <label class="col-form-label" for="genome_name">Genome Name</label>
+                    </div>
+                    <div class="col">
+                        <input class="form-control" type="text" id="genome_name" value="none">
+                    </div>
+                    <div class="col">
+                        <label class="col-form-label" for="read_length">Read Length</label>
+                    </div>
+                    <div class="col">
+                        <input class="form-control" type="number" id="read_length" list="read_length_options"
+                            value="50">
+                        <datalist id="read_length_options">
+                            <option selected>50</option>
+                            <option>75</option>
+                            <option>100</option>
+                            <option>125</option>
+                            <option>150</option>
+                            <option>300</option>
+                        </datalist>
+                    </div>
+                    <div class="col">
+                        <label class="col-form-label" for="read_configuration">Read configuration</label>
+                    </div>
+                    <div class="col">
+                        <select name="select" class="form-select" id="read_configuration">
+                            <option value="single-end" selected>SE</option>
+                            <option value="paired-end">PE</option>
+                            <option value="both">Both</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label class="col-form-label" for="number_of_reads">Number of reads</label>
+                    </div>
+                    <div class="col">
+                        <input class="form-control" type="number" id="number_of_reads" value="none">
+                    </div>
+                    <div class="col">
+                        <label class="col-form-label" for="annotations_gtf">Annotations gtf</label>
+                    </div>
+                    <div class="col">
+                        <input class="form-control" type="text" id="annotations_gtf" value="none">
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
 </body>
 
 </html>
