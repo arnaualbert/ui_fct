@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styles.css">
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <script src="./js/index.js"></script>
+    <title>Demultiplex</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Name of the project</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br><br>
+    <!-- with bootstrap -->
+    <div id="forms">
+        <form id="form_demultiplex">
+            <div class="container text-center">
+                <div class="row g-3 row-cols-4">
+                    <div class="col">
+                        <label for="fasta0" class="col-form-label">Fasta 1 FWD</label>
+                    </div>
+                    <div class="col">
+                        <input type="file" id="fasta0" class="form-control">
+                    </div>
+                    <div class="col">
+                        <label for="fasta1" class="col-form-label">Fasta 2 RV</label>
+                    </div>
+                    <div class="col">
+                        <input type="file" id="fasta1" class="form-control">
+                    </div>
+                    <div class="col">
+                        <label for="output_dir" class="col-form-label">Output Directory</label>
+                    </div>
+                    <div class="col">
+                        <input type="text" id="output_dir" class="form-control">
+                    </div>
+                    <div class="col">
+                        <label for="ref_genome" class="col-form-label">Reference Genome</label>
+                    </div>
+                    <div class="col">
+                        <input type="text" id="ref_genome" class="form-control">
+                    </div>
+                    <div class="col">
+                        <label for="sample_name" class="col-form-label">Sample Name</label>
+                    </div>
+                    <div class="col">
+                        <input type="text" id="sample_name" class="form-control">
+                    </div>
+                    <div class="col">
+                        <button type="button" class="btn btn-outline-secondary btn-sm" onclick="showHide();">Optional
+                            arguements</button>
+                    </div>
+                    <div id="optional_arguments">
+                        <div class="col">
+                            <label for="num_of_threads" class="col-form-label">Number of threads</label>
+                        </div>
+                        <div class="col">
+                            <input type="number" id="num_of_threads" class="form-control" value="16">
+                        </div>
+                        <div class="col">
+                            <label for="reads_per_chunk" class="col-form-label">Reads per chunk</label>
+                        </div>
+                        <div class="col">
+                            <input type="number" id="reads_per_chunk" class="form-control">
+                        </div>
+                        <div class="col">
+                            <label for="replace" class="col-form-label">Replace</label>
+                        </div>
+                        <div class="col">
+                            <input type="file" id="replace" class="form-control">
+                        </div>
+                        <div class="col">
+                            <label for="skip_removing_tmp_files" class="col-form-label">Skip Removing tmp files</label>
+                        </div>
+                        <div class="col">
+                            <select class="form-select" id="skip_removing_tmp_files">
+                                <option value="True">True</option>
+                                <option value="False">False</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="wit_db" class="col-form-label">Wit database</label>
+                        </div>
+                        <div class="col">
+                            <select class="form-select" id="wit_db">
+                                <option value="True">True</option>
+                                <option value="False">False</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+        </form>
+    </div>
+    <br>
+    <div>
+        <form>
+            <div class="container text-center">
+                <div class="row g-3 row-cols-2">
+                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="addForm()">Add
+                        more</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm">Proceed</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
