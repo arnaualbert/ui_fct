@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
         where_form.appendChild(new_form);
     })
 
-    var bt_options = document.getElementsByClassName('bt_optional_arguments');
+    var bt_options = document.getElementsByClassName('.bt_optional_arguments');
 
     var display_options = function () {
         if (options.style.display === "none") {
