@@ -206,6 +206,34 @@
                     <div id="optional_arguments" class="col">
                         <input class="form-control" type="text" id="mapper_remplate_path" value="None">
                     </div>
+                    <div id="optional_arguments" class="col">
+                        <label class="col-form-label" for="max_mismatch_per_len">Max Missmatch Per Len</label>
+                    </div>
+                    <div id="optional_arguments" class="col">
+                        <input class="form-control" type="number" id="max_mismatch_per_len" value="0.04">
+                    </div>
+                    <!-- ask if that can be only true or false -->
+                    <div id="optional_arguments" class="col">
+                        <label class="col-form-label" for="bact_mode">Bacterial Mode</label>
+                    </div>
+                    <div id="optional_arguments" class="col">
+                        <select name="select" class="form-select" id="bact_mode">
+                            <option value="False" selected>False</option>
+                            <option value="True">True</option>
+                        </select>
+                    </div>
+                    <div id="optional_arguments" class="col">
+                        <label class="col-form-label" for="max_mismatch">Max Missmatch</label>
+                    </div>
+                    <div id="optional_arguments" class="col">
+                        <input class="form-control" type="number" id="max_mismatch" value="10">
+                    </div>
+                    <div class="col">
+                        <label class="col-form-label" for="star_temp">Star tmp</label>
+                    </div>
+                    <div class="col">
+                        <input class="form-control" type="text" id="star_temp" value="./TMPs">
+                    </div>
                 </div>
             </div>
             <br><br>
