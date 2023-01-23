@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/dna.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
@@ -39,7 +40,7 @@
     <div id="forms_dna">
         <form id="form_dna">
             <div class="container text-center">
-                <div class="row g-3 row-cols-4">
+                <div class="row g-3 row-cols-6"><!--eran row-cols-4-->
                     <div class="col">
                         <label class="col-form-label" for="fastaq">Fastaq</label>
                     </div>
@@ -84,11 +85,120 @@
                         <input class="form-control" type="number" id="number_of_reads" value="none">
                     </div>
                     <div class="col">
-                        <button type="button" class="btn btn-outline-secondary">Optional
+                        <button type="button" class="btn btn-outline-secondary" onclick="showHideDna();">Optional
                             arguements</button>
                     </div>
-                    <div class="col">
+                    <div id="optional_arguments" class="col">
                         <p> </p>
+                    </div>
+                    <div id="optional_arguments" class="col">
+                        <label class="col-form-label" for="number_of_cores">Number of cores</label>
+                    </div>
+                    <div id="optional_arguments" class="col">
+                        <input class="form-control" type="number" id="number_of_cores" value="1">
+                    </div>
+                    <div id="optional_arguments" class="col">
+                        <label class="col-form-label" for="base_error_rate">Base error rate</label>
+                    </div>
+                    <div id="optional_arguments" class="col">
+                        <input class="form-control" type="number" id="base_error_rate" value="0.02">
+                    </div>
+                    <div id="optional_arguments" class="col">
+                        <label class="col-form-label" for="outer_distance">Outer distance</label>
+                    </div>
+                    <div id="optional_arguments" class="col">
+                        <input class="form-control" type="number" id="outer_distance" value="500">
+                    </div>
+                    <div id="optional_arguments" class="col">
+                        <label class="col-form-label" for="standar_deviation">Standar deviation</label>
+                    </div>
+                    <div id="optional_arguments" class="col">
+                        <input class="form-control" type="number" id="standar_deviation" value="30">
+                    </div>
+                    <div id="optional_arguments" class="col">
+                        <label class="col-form-label" for="coverage">Coverage</label>
+                    </div>
+                    <div id="optional_arguments" class="col">
+                        <input class="form-control" type="number" id="coverage" value="none">
+                    </div>
+                    <div id="optional_arguments" class="col">
+                        <label class="col-form-label" for="mutation_rate">Mutation rate</label>
+                    </div>
+                    <div id="optional_arguments" class="col">
+                        <input class="form-control" type="number" id="mutation_rate" value="0.001">
+                    </div>
+                    <div id="optional_arguments" class="col">
+                        <label class="col-form-label" for="indel_fraction">Indel fraction</label>
+                    </div>
+                    <div id="optional_arguments" class="col">
+                        <input class="form-control" type="number" id="indel_fraction" value="0.015">
+                    </div>
+                    <div id="optional_arguments" class="col">
+                        <label class="col-form-label" for="indel_extended">Indel extended</label>
+                    </div>
+                    <div id="optional_arguments" class="col">
+                        <input class="form-control" type="number" id="indel_extended" value="0.3">
+                    </div>
+                    <div id="optional_arguments" class="col">
+                        <label class="col-form-label" for="seed_random_generator">Seed Random generator</label>
+                    </div>
+                    <div id="optional_arguments" class="col">
+                        <input class="form-control" type="number" id="seed_random_generator" value="-1">
+                    </div>
+                    <div id="optional_arguments" class="col">
+                        <label class="col-form-label" for="discard_ambiguos">Discard ambiguos</label>
+                    </div>
+                    <div id="optional_arguments" class="col">
+                        <input class="form-control" type="number" id="discard_ambiguos" value="0.05">
+                    </div>
+                    <div id="optional_arguments" class="col">
+                        <label class="col-form-label" for="haplotype_mode">Haplotype mode</label>
+                    </div>
+                    <div id="optional_arguments" class="col">
+                        <select name="select" class="form-select" id="haplotype_mode">
+                            <option value="False" selected>False</option>
+                            <option value="True">True</option>
+                        </select>
+                    </div>
+                    <div id="optional_arguments" class="col">
+                        <label class="col-form-label" for="output_directory">Output Directory</label>
+                    </div>
+                    <div id="optional_arguments" class="col">
+                        <input class="form-control" type="text" id="output_directory" value="crossmap_out">
+                    </div>
+                    <div id="optional_arguments" class="col">
+                        <label class="col-form-label" for="verbose_mode">Verbose Mode</label>
+                    </div>
+                    <div id="optional_arguments" class="col">
+                        <select name="select" class="form-select" id="verbose_mode">
+                            <option value="All" selected>All</option>
+                            <option value="Debug">Debug</option>
+                            <option value="None">None</option>
+                        </select>
+                    </div>
+                    <div id="optional_arguments" class="col">
+                        <label class="col-form-label" for="group_bar_chart">Group bar chart</label>
+                    </div>
+                    <div id="optional_arguments" class="col">
+                        <select name="select" class="form-select" id="group_bar_chart">
+                            <option value="False" selected>False</option>
+                            <option value="True">True</option>
+                        </select>
+                    </div>
+                    <div id="optional_arguments" class="col">
+                        <label class="col-form-label" for="report_cross_mapped">Report Cross Mapped</label>
+                    </div>
+                    <div id="optional_arguments" class="col">
+                        <select name="select" class="form-select" id="report_cross_mapped">
+                            <option value="False" selected>False</option>
+                            <option value="True">True</option>
+                        </select>
+                    </div>
+                    <div id="optional_arguments" class="col">
+                        <label class="col-form-label" for="mapper_remplate_path">Mapper Template Path</label>
+                    </div>
+                    <div id="optional_arguments" class="col">
+                        <input class="form-control" type="text" id="mapper_remplate_path" value="None">
                     </div>
                 </div>
             </div>
@@ -99,7 +209,7 @@
         <form>
             <div class="container text-center">
                 <div class="row g-3 row-cols-2">
-                    <button type="button" class="btn btn-outline-secondary btn-sm">Add
+                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="addFormDna()">Add
                         more</button>
                     <button type="button" class="btn btn-outline-secondary btn-sm">Proceed</button>
                 </div>
