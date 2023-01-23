@@ -160,19 +160,3 @@ function addForm() {
     var where_form = document.getElementById("forms");
     where_form.appendChild(new_form);
   }
-
-  function inpNum(e) {
-    e = e || window.event;
-    var charCode = (typeof e.which == "undefined") ? e.keyCode : e.which;
-    var charStr = String.fromCharCode(charCode);
-    if (!charStr.match(/^[0-9]+$/))
-      e.preventDefault();
-  }
-
-
-  function isNumberKey(evt){
-    var charCode = (evt.which) ? evt.which : evt.keyCode
-    if (charCode > 31 && (charCode != 46 &&(charCode < 48 || charCode > 57)))
-        return false;
-    return true;
-}
