@@ -69,7 +69,7 @@ function sendDna() {
 
 
     for (var i = 0; i < total_obj; i++) {
-        var dnaParams = new DnaParams(fastaq[i].value, genomeName[i].value, readLength[i].value, readConfiguration[i].value, numberOfReads[i].value, numberOfReads[i].value, numberofcores[i].value, baseerorrate[i].value, outerDistance[i].value, standarDeviation[i].value, coverage[i].value, mutationRate[i].value, indelFraction[i].value, indelExtended[i].value, seedRandomGenerator[i].value, discarambiguous[i].value, haplotypeMode[i].value, outputDirectory[i].value, verboseMode[i].value, groupBarChart[i].value, reportCrossMapped[i].value, mapperTemplatePath[i].value, minSeedLength[i].value, matchingScore[i].value, mismatchPenalty[i].value);
+        var dnaParams = new DnaParams(fastaq[i].value, genomeName[i].value, readLength[i].value, readConfiguration[i].value, numberOfReads[i].value, numberofcores[i].value, baseerorrate[i].value, outerDistance[i].value, standarDeviation[i].value, coverage[i].value, mutationRate[i].value, indelFraction[i].value, indelExtended[i].value, seedRandomGenerator[i].value, discarambiguous[i].value, haplotypeMode[i].value, outputDirectory[i].value, verboseMode[i].value, groupBarChart[i].value, reportCrossMapped[i].value, mapperTemplatePath[i].value, minSeedLength[i].value, matchingScore[i].value, mismatchPenalty[i].value);
         objects.push(dnaParams);
     }
 
