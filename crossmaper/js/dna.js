@@ -1,7 +1,8 @@
-document.addEventListener('DOMContentLoaded',function(){
+document.addEventListener('DOMContentLoaded', function () {
 
+    // select all the optional arguments
     var optionalArguments = document.querySelectorAll('#optional_arguments');
-
+    // loop the array of all the optional arguments and hide them
     for (var i = 0; i < optionalArguments.length; i++) {
         var options = optionalArguments[i];
         options.style.display = "none";
@@ -12,8 +13,8 @@ document.addEventListener('DOMContentLoaded',function(){
 
 })
 
+// when the button is clicked hide all the optional arguments if they are present or show all the optional arguments if they are not shown
 function showHideDna() {
-    // var optionalArguments = document.getElementsByClassName("optional_arguments")
     var optionalArguments = document.querySelectorAll('#optional_arguments');
     for (var i = 0; i < optionalArguments.length; i++) {
         var options = optionalArguments[i];
@@ -26,26 +27,16 @@ function showHideDna() {
     }
 }
 
+// clone the first form and add it to the div
 function addFormDna() {
     var original = document.getElementById("form_dna");
     var new_form = original.cloneNode(true);
-  
-    // get all the labels, inputs, and selects in the cloned fieldset
-    // var labels = new_form.querySelectorAll('label');
-    // var inputs = new_form.querySelectorAll('input, select');
-    // // loop over the labels, inputs, and selects, and assign a new id to each one
-    // labels.forEach(label => {
-    //     label.id += '_' + fasta_id;
-    // });
-    // inputs.forEach(input => {
-    //     input.id += '_' + fasta_id;
-    // });
-    // fasta_id = fasta_id + 1;
     var where_form = document.getElementById("forms_dna");
     where_form.appendChild(new_form);
 }
 
-function sendDna(){
+// get all the parameters and create the DnaParams object , then add it to the array
+function sendDna() {
 
     var objects = [];
 
@@ -78,9 +69,9 @@ function sendDna(){
 
 
     for (var i = 0; i < total_obj; i++) {
-        var dnaParams = new DnaParams(fastaq[i].value, genomeName[i].value, readLength[i].value,readConfiguration[i].value,numberOfReads[i].value, numberOfReads[i].value,numberofcores[i].value, baseerorrate[i].value, outerDistance[i].value, standarDeviation[i].value, coverage[i].value, mutationRate[i].value, indelFraction[i].value, indelExtended[i].value, seedRandomGenerator[i].value, discarambiguous[i].value, haplotypeMode[i].value, outputDirectory[i].value, verboseMode[i].value, groupBarChart[i].value, reportCrossMapped[i].value, mapperTemplatePath[i].value,minSeedLength[i].value,matchingScore[i].value,mismatchPenalty[i].value);
+        var dnaParams = new DnaParams(fastaq[i].value, genomeName[i].value, readLength[i].value, readConfiguration[i].value, numberOfReads[i].value, numberOfReads[i].value, numberofcores[i].value, baseerorrate[i].value, outerDistance[i].value, standarDeviation[i].value, coverage[i].value, mutationRate[i].value, indelFraction[i].value, indelExtended[i].value, seedRandomGenerator[i].value, discarambiguous[i].value, haplotypeMode[i].value, outputDirectory[i].value, verboseMode[i].value, groupBarChart[i].value, reportCrossMapped[i].value, mapperTemplatePath[i].value, minSeedLength[i].value, matchingScore[i].value, mismatchPenalty[i].value);
         objects.push(dnaParams);
     }
-    
+
     console.log(objects);
 }

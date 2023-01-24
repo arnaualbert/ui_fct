@@ -9,7 +9,7 @@ class  Demultiplex{
     replace;
     skipRemovingTmpFiles;
     witDB;
-    
+    // constructor
     constructor(fastq1, fastq2, outdir, refGenomes,sampleNames, threads, nreadsPerChunk, replace, skipRemovingTmpFiles, wtDB) {
         this.fastq1 = fastq1;
         this.fastq2 = fastq2;
