@@ -1,5 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+
+    // if(navigator.userAgent.includes("Firefox")){
+    //     document.
+    // }
+
     // select all the optional arguments
     var optionalArguments = document.querySelectorAll('#optional_arguments');
     // loop the array of all the optional arguments and hide them
@@ -84,12 +89,17 @@ function sendDemultiplexing() {
     // }
 
     for (let i = 0; i < total_obj; i++) {
-        if(fasta0[i].value!= "" && fasta1[i].value!= "" && output_dir[i].value!= "" && refGenomes[i].value!= "" && sampleNames[i].value!=""){
-            if(!isNaN(numberofthreads[i].value)&& !isNaN(readsperchunk[i].value)){
+        if (fasta0[i].value != "" && fasta1[i].value != "" && output_dir[i].value != "" && refGenomes[i].value != "" && sampleNames[i].value != "") {
+            if (!isNaN(numberofthreads[i].value) && !isNaN(readsperchunk[i].value)) {
                 var demultiplex_params = new Demultiplex(fasta0[i].value, fasta1[i].value, output_dir[i].value, refGenomes[i].value, sampleNames[i].value, numberofthreads[i].value, readsperchunk[i].value, replacements[i].value, skipRemovingTmpFilesFrom[i].value, witDB[i].value)
                 objects.push(demultiplex_params);
-            }else{alert("the fields read_per_chunk and num_of_threads must be numbers"); objects = null;}
-        }else{
+            } else {
+                numberofthreads[i].value = 16;
+                readsperchunk[i].value = "";
+                var demultiplex_params = new Demultiplex(fasta0[i].value, fasta1[i].value, output_dir[i].value, refGenomes[i].value, sampleNames[i].value, numberofthreads[i].value, readsperchunk[i].value, replacements[i].value, skipRemovingTmpFilesFrom[i].value, witDB[i].value)
+                objects.push(demultiplex_params);
+            }
+        } else {
             alert("Please fill in all the required fields");
             objects = null;
         }
