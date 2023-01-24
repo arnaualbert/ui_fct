@@ -25,6 +25,7 @@ class RnaParams {
     bacterialMode;
     maxMissmatch;
     starTmp;
+    
     // constructor
     constructor(fastaq, genomeName, readLength, readConfiguration, numberOfReads, annotationsgtf, numberofcores, baseerorrate, outerDistance, standarDeviation, coverage, mutationRate, indelFraction, indelExtended, seedRandomGenerator,
         Discarambiguous, haplotypeMode, outputDirectory, verboseMode, groupBarChart, reportCross, mapperTemplatePath, maxMissmatchPerLen, bacterialMode, maxMissmatch, starTmp) {

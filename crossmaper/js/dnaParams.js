@@ -23,7 +23,7 @@ class DnaParams {
     minSeedLength;
     matchingScore;
     mismatchPenalty;
-
+    // constructor
     constructor(fastaq, genomeName, readLength, readConfiguration, numberOfReads, numberofcores, baseerorrate, outerDistance, standarDeviation, coverage, mutationRate, indelFraction, indelExtended, seedRandomGenerator, Discarambiguous,
         haplotypeMode, outputDirectory, verboseMode, groupBarChart, reportCross, mapperTemplatePath, minSeedLength, matchingScore, mismatchPenalty) {
         this.fastaq = fastaq;
