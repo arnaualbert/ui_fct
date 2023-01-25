@@ -106,11 +106,17 @@
                     <div id="optional_arguments" class="col">
                         <label for="wit_db" class="col-form-label">Wit database</label>
                     </div>
-                    <div id="optional_arguments" class="col">
+                    <!-- ask what type: select or input -->
+                    <!-- <div id="optional_arguments" class="col">
                         <select class="form-select" id="wit_db">
-                            <option value="True">True</option>
-                            <option value="False">False</option>
+                            <option value="True">Name of database 1</option>
+                            <option value="False">Name of database 2</option>
+                            <option value="False">Name of database 3</option>
+                            <option value="False">Name of database 4</option>
                         </select>
+                    </div> -->
+                    <div id="optional_arguments" class="col">
+                        <input type="text" id="wit_db" class="form-control">
                     </div>
                 </div>
             </div>
@@ -122,8 +128,8 @@
         <form>
             <div class="container text-center">
                 <div class="row g-3 row-cols-2">
-                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="addForm()">Add
-                        more</button>
+                    <!-- <button type="button" class="btn btn-outline-secondary btn-sm" onclick="addForm()">Add
+                        more</button> -->
                     <button type="button" id="proceed_demultiplexing" class="btn btn-outline-secondary btn-sm" onclick="sendDemultiplexing()">Proceed</button>
                 </div>
             </div>
