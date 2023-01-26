@@ -41,199 +41,218 @@
     <div id="forms_rna">
         <form id="form_rna">
             <div class="container text-center">
-                <div class="row g-3 row-cols-6">
-                    <div class="col">
-                        <label class="col-form-label" for="fastaq">Fasta</label>
+                <div>
+                    <div id="fastas">
+                        <div id="form_fasta" class="mt-1 row g-3 row-cols-9">
+                            <div class="col">
+                                <label class="col-form-label" for="fastaq">Fasta</label>
+                            </div>
+                            <div class="col">
+                                <input class="form-control" type="file" id="fastaq">
+                            </div>
+                            <div class="col">
+                                <label class="col-form-label" for="genome_name">Genome Name</label>
+                            </div>
+                            <div class="col">
+                                <input class="form-control" type="text" id="genome_name">
+                            </div>
+                            <div class="col">
+                                <label class="col-form-label" for="number_of_reads">Number of reads</label>
+                            </div>
+                            <div class="col">
+                                <input class="form-control" type="number" id="number_of_reads">
+                            </div>
+                            <div class="col">
+                                <label class="col-form-label" for="annotations_gtf">Annotations gtf</label>
+                            </div>
+                            <div class="col">
+                                <input class="form-control" type="text" id="annotations_gtf">
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-outline-secondary btn-sm"
+                                    onclick="addFormRna()">+</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col">
-                        <input class="form-control" type="file" id="fastaq">
+                    <hr class="border border-secondary border-2 opacity-75">
+                    <div id="read_lengths" >
+                        <div id="form_read_length" class=" mt-1 row g-3 row-cols-6">
+                            <div class="col">
+                                <label class="col-form-label" for="read_length">Read Length</label>
+                            </div>
+                            <div class="col">
+                                <input class="form-control" type="number" id="read_length" list="read_length_options"
+                                    value="50">
+                                <datalist id="read_length_options">
+                                    <option selected>50</option>
+                                    <option>75</option>
+                                    <option>100</option>
+                                    <option>125</option>
+                                    <option>150</option>
+                                    <option>300</option>
+                                </datalist>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-outline-secondary btn-sm"
+                                    onclick="addFormReadLength()">+</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col">
-                        <label class="col-form-label" for="genome_name">Genome Name</label>
-                    </div>
-                    <div class="col">
-                        <input class="form-control" type="text" id="genome_name">
-                    </div>
-                    <div class="col">
-                        <label class="col-form-label" for="read_length">Read Length</label>
-                    </div>
-                    <div class="col">
-                        <input class="form-control" type="number" id="read_length" list="read_length_options"
-                            value="50">
-                        <datalist id="read_length_options">
-                            <option selected>50</option>
-                            <option>75</option>
-                            <option>100</option>
-                            <option>125</option>
-                            <option>150</option>
-                            <option>300</option>
-                        </datalist>
-                    </div>
-                    <div class="col">
-                        <label class="col-form-label" for="read_configuration">Read configuration</label>
-                    </div>
-                    <div class="col">
-                        <select name="select" class="form-select" id="read_configuration">
-                            <option value="single-end" selected>SE</option>
-                            <option value="paired-end">PE</option>
-                            <option value="both">Both</option>
-                        </select>
-                    </div>
-                    <div class="col">
-                        <label class="col-form-label" for="number_of_reads">Number of reads</label>
-                    </div>
-                    <div class="col">
-                        <input class="form-control" type="number" id="number_of_reads">
-                    </div>
-                    <div class="col">
-                        <label class="col-form-label" for="annotations_gtf">Annotations gtf</label>
-                    </div>
-                    <div class="col">
-                        <input class="form-control" type="text" id="annotations_gtf">
-                    </div>
-                    <div class="col">
-                        <button type="button" class="btn btn-outline-secondary" onclick="showHideRna();">Optional
-                            arguements</button>
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <p> </p>
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <label class="col-form-label" for="number_of_cores">Number of cores</label>
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <input class="form-control" type="number" id="number_of_cores" value="1">
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <label class="col-form-label" for="base_error_rate">Base error rate</label>
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <input class="form-control" type="number" id="base_error_rate" value="0.02">
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <label class="col-form-label" for="outer_distance">Outer distance</label>
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <input class="form-control" type="number" id="outer_distance" value="500">
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <label class="col-form-label" for="standar_deviation">Standar deviation</label>
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <input class="form-control" type="number" id="standar_deviation" value="30">
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <label class="col-form-label" for="coverage">Coverage</label>
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <input class="form-control" type="number" id="coverage">
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <label class="col-form-label" for="mutation_rate">Mutation rate</label>
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <input class="form-control" type="number" id="mutation_rate" value="0.001">
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <label class="col-form-label" for="indel_fraction">Indel fraction</label>
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <input class="form-control" type="number" id="indel_fraction" value="0.015">
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <label class="col-form-label" for="indel_extended">Indel extended</label>
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <input class="form-control" type="number" id="indel_extended" value="0.3">
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <label class="col-form-label" for="seed_random_generator">Seed Random generator</label>
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <input class="form-control" type="number" id="seed_random_generator" value="-1">
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <label class="col-form-label" for="discard_ambiguos">Discard ambiguos</label>
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <input class="form-control" type="number" id="discard_ambiguos" value="0.05">
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <label class="col-form-label" for="haplotype_mode">Haplotype mode</label>
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <select name="select" class="form-select" id="haplotype_mode">
-                            <option value="False" selected>False</option>
-                            <option value="True">True</option>
-                        </select>
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <label class="col-form-label" for="output_directory">Output Directory</label>
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <input class="form-control" type="text" id="output_directory" value="crossmap_out">
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <label class="col-form-label" for="verbose_mode">Verbose Mode</label>
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <select name="select" class="form-select" id="verbose_mode">
-                            <option value="All" selected>All</option>
-                            <option value="Debug">Debug</option>
-                            <option value=""></option>
-                        </select>
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <label class="col-form-label" for="group_bar_chart">Group bar chart</label>
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <select name="select" class="form-select" id="group_bar_chart">
-                            <option value="False" selected>False</option>
-                            <option value="True">True</option>
-                        </select>
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <label class="col-form-label" for="report_cross_mapped">Report Cross Mapped</label>
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <select name="select" class="form-select" id="report_cross_mapped">
-                            <option value="False" selected>False</option>
-                            <option value="True">True</option>
-                        </select>
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <label class="col-form-label" for="mapper_template_path">Mapper Template Path</label>
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <input class="form-control" type="text" id="mapper_template_path">
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <label class="col-form-label" for="max_mismatch_per_len">Max Missmatch Per Len</label>
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <input class="form-control" type="number" id="max_mismatch_per_len" value="0.04">
-                    </div>
-                    <!-- ask if that can be only true or false  -->
-                    <div id="optional_arguments" class="col">
-                        <label class="col-form-label" for="bact_mode">Bacterial Mode</label>
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <select name="select" class="form-select" id="bact_mode">
-                            <option value="False" selected>False</option>
-                            <option value="True">True</option>
-                        </select>
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <label class="col-form-label" for="max_mismatch">Max Missmatch</label>
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <input class="form-control" type="number" id="max_mismatch" value="10">
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <label class="col-form-label" for="star_temp">Star tmp</label>
-                    </div>
-                    <div id="optional_arguments" class="col">
-                        <input class="form-control" type="text" id="star_temp" value="./TMPs">
+                    <div class="mt-2 row g-3 row-cols-6">
+                        <div class="col">
+                            <label class="col-form-label" for="read_configuration">Read configuration</label>
+                        </div>
+                        <div class="col">
+                            <select name="select" class="form-select" id="read_configuration">
+                                <option value="single-end" selected>SE</option>
+                                <option value="paired-end">PE</option>
+                                <option value="both">Both</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <button type="button" class="btn btn-outline-secondary" onclick="showHideRna();">Optional
+                                arguements</button>
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <p> </p>
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <label class="col-form-label" for="number_of_cores">Number of cores</label>
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <input class="form-control" type="number" id="number_of_cores" value="1">
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <label class="col-form-label" for="base_error_rate">Base error rate</label>
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <input class="form-control" type="number" id="base_error_rate" value="0.02">
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <label class="col-form-label" for="outer_distance">Outer distance</label>
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <input class="form-control" type="number" id="outer_distance" value="500">
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <label class="col-form-label" for="standar_deviation">Standar deviation</label>
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <input class="form-control" type="number" id="standar_deviation" value="30">
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <label class="col-form-label" for="coverage">Coverage</label>
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <input class="form-control" type="number" id="coverage">
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <label class="col-form-label" for="mutation_rate">Mutation rate</label>
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <input class="form-control" type="number" id="mutation_rate" value="0.001">
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <label class="col-form-label" for="indel_fraction">Indel fraction</label>
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <input class="form-control" type="number" id="indel_fraction" value="0.015">
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <label class="col-form-label" for="indel_extended">Indel extended</label>
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <input class="form-control" type="number" id="indel_extended" value="0.3">
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <label class="col-form-label" for="seed_random_generator">Seed Random generator</label>
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <input class="form-control" type="number" id="seed_random_generator" value="-1">
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <label class="col-form-label" for="discard_ambiguos">Discard ambiguos</label>
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <input class="form-control" type="number" id="discard_ambiguos" value="0.05">
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <label class="col-form-label" for="haplotype_mode">Haplotype mode</label>
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <select name="select" class="form-select" id="haplotype_mode">
+                                <option value="False" selected>False</option>
+                                <option value="True">True</option>
+                            </select>
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <label class="col-form-label" for="output_directory">Output Directory</label>
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <input class="form-control" type="text" id="output_directory" value="crossmap_out">
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <label class="col-form-label" for="verbose_mode">Verbose Mode</label>
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <select name="select" class="form-select" id="verbose_mode">
+                                <option value="All" selected>All</option>
+                                <option value="Debug">Debug</option>
+                                <option value=""></option>
+                            </select>
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <label class="col-form-label" for="group_bar_chart">Group bar chart</label>
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <select name="select" class="form-select" id="group_bar_chart">
+                                <option value="False" selected>False</option>
+                                <option value="True">True</option>
+                            </select>
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <label class="col-form-label" for="report_cross_mapped">Report Cross Mapped</label>
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <select name="select" class="form-select" id="report_cross_mapped">
+                                <option value="False" selected>False</option>
+                                <option value="True">True</option>
+                            </select>
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <label class="col-form-label" for="mapper_template_path">Mapper Template Path</label>
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <input class="form-control" type="text" id="mapper_template_path">
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <label class="col-form-label" for="max_mismatch_per_len">Max Missmatch Per Len</label>
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <input class="form-control" type="number" id="max_mismatch_per_len" value="0.04">
+                        </div>
+                        <!-- ask if that can be only true or false  -->
+                        <div id="optional_arguments" class="col">
+                            <label class="col-form-label" for="bact_mode">Bacterial Mode</label>
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <select name="select" class="form-select" id="bact_mode">
+                                <option value="False" selected>False</option>
+                                <option value="True">True</option>
+                            </select>
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <label class="col-form-label" for="max_mismatch">Max Missmatch</label>
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <input class="form-control" type="number" id="max_mismatch" value="10">
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <label class="col-form-label" for="star_temp">Star tmp</label>
+                        </div>
+                        <div id="optional_arguments" class="col">
+                            <input class="form-control" type="text" id="star_temp" value="./TMPs">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -244,9 +263,7 @@
         <form>
             <div class="container text-center">
                 <div class="row g-3 row-cols-2">
-                    <!-- <button type="button" class="btn btn-outline-secondary btn-sm" onclick="addFormRna()">Add
-                        more</button> -->
-                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="sendRna()">Proceed</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="sendRna_v2()">Proceed</button>
                 </div>
             </div>
         </form>
