@@ -13,32 +13,6 @@ document.addEventListener("DOMContentLoaded", function () {
         options.style.display = "none";
     }
 
-    //prueba
-    // document.getElementById("proceed_demultiplexing").addEventListener("click",function (){
-
-    //     var total_forms = document.querySelectorAll("#form_demultiplex");
-    //     var fasta0 = document.querySelectorAll("#fasta0");
-    //     var fasta1 = document.querySelectorAll("#fasta1");
-    //     var output_dir = document.querySelectorAll("#output_dir");
-    //     var refGenomes = document.querySelectorAll("#ref_genome");
-    //     var sampleNames = document.querySelectorAll("#sample_name");
-    //     var numberofthreads = document.querySelectorAll("#num_of_threads");
-    //     var readsperchunk = document.querySelectorAll("#reads_per_chunk");
-    //     var total_obj = total_forms.length;
-
-    //     for (let i = 0; i < total_obj; i++) {
-    //         if(fasta0[i].value!= "" && fasta1[i].value!= "" && output_dir[i].value!= "" && refGenomes[i].value!= "" && sampleNames[i].value!=""){
-    //             if(!isNaN(numberofthreads[i].value)&& !isNaN(readsperchunk[i].value)){
-    //                 var obejects = sendDemultiplexing();
-    //                 console.log(obejects);
-    //             }else{alert("the fields read_per_chunk and num_of_threads must be numbers");}
-
-    //         }else{
-    //             alert("Please fill in all the required fields");
-    //         }
-    //     }
-    // })
-
 })
 
 // when the button is clicked hide all the optional arguments if they are present or show all the optional arguments if they are not shown
@@ -82,12 +56,6 @@ function sendDemultiplexing() {
     var total_obj = total_forms.length;
     
 
-
-    // for (let i = 0; i < total_obj; i++) {
-    //     var demultiplex_params = new Demultiplex(fasta0[i].value, fasta1[i].value, output_dir[i].value, refGenomes[i].value, sampleNames[i].value, numberofthreads[i].value, readsperchunk[i].value, replacements[i].value, skipRemovingTmpFilesFrom[i].value, witDB[i].value)
-    //     objects.push(demultiplex_params);
-    // }
-
     for (let i = 0; i < total_obj; i++) {
         if (fasta0[i].value != "" && fasta1[i].value != "" && output_dir[i].value != "" && refGenomes[i].value != "" && sampleNames[i].value != "" && !isNaN(numberofthreads[i].value) && !isNaN(readsperchunk[i].value)) {
             if (!isNaN(numberofthreads[i].value) && !isNaN(readsperchunk[i].value)) {
@@ -97,7 +65,8 @@ function sendDemultiplexing() {
                 numberofthreads[i].value = "16";
                 readsperchunk[i].value = "";
                 var demultiplex_params = new Demultiplex(fasta0[i].value, fasta1[i].value, output_dir[i].value, refGenomes[i].value, sampleNames[i].value, numberofthreads[i].value, readsperchunk[i].value, replacements[i].value, skipRemovingTmpFilesFrom[i].value, witDB[i].value)
-                objects.push(demultiplex_params);
+                var demultiplexJSON = JSON.stringify(demultiplex_params);
+                objects.push(demultiplexJSON);
             }
         } else {
             alert("Please fill in all the required fields");
@@ -106,6 +75,5 @@ function sendDemultiplexing() {
     }
     console.log(objects);
 
-    // return objects;
 
 }
