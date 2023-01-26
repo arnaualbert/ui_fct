@@ -1,10 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-
-    // if(navigator.userAgent.includes("Firefox")){
-    //     document.
-    // }
-
     // select all the optional arguments
     var optionalArguments = document.querySelectorAll('#optional_arguments');
     // loop the array of all the optional arguments and hide them
