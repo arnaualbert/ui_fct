@@ -74,7 +74,7 @@ function sendDemultiplexing() {
     var fasta1 = document.querySelectorAll("#fasta1");
     var output_dir = document.querySelectorAll("#output_dir");
     var refGenomes = document.querySelectorAll("#ref_genome");
-    var sampleNames = document.querySelectorAll("#sample_name");
+    var sampleNames = document.querySelectorAll("#organism_name");
     var numberofthreads = document.querySelectorAll("#num_of_threads");
     var readsperchunk = document.querySelectorAll("#reads_per_chunk");
     var replacements = document.querySelectorAll("#replace");
