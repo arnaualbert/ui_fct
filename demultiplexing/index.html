@@ -58,19 +58,31 @@
                         <input type="text" id="output_dir" class="form-control">
                     </div>
                     <div class="col">
-                        <label for="ref_genome" class="col-form-label">Reference Genome</label>
+                        <p></p>
                     </div>
-                    <div class="col">
-                        <input type="text" id="ref_genome" class="form-control">
+                </div>
+                <div id="references_organisms">
+                    <div id="reference_organism" class=" mt-1 row g-3 row-cols-5">
+                        <div class="col">
+                            <label for="ref_genome" class="col-form-label">Reference Genome</label>
+                        </div>
+                        <div class="col">
+                            <input type="text" id="ref_genome" class="form-control">
+                        </div>
+                        <div class="col">
+                            <!-- <label for="sample_name" class="col-form-label">Sample Name</label> -->
+                            <label for="organism_name" class="col-form-label">Organism Name</label>
+                        </div>
+                        <div class="col">
+                            <input type="text" id="sample_name" class="form-control">
+                        </div>
+                        <div class="col">
+                            <button type="button" class="btn btn-outline-secondary btn-sm"
+                                onclick="addFormReferenceOrganism()">+</button>
+                        </div>
                     </div>
-                    <div class="col">
-                        <!-- <label for="sample_name" class="col-form-label">Sample Name</label> -->
-                        <label for="organism_name" class="col-form-label">Organism Name</label>
-
-                    </div>
-                    <div class="col">
-                        <input type="text" id="sample_name" class="form-control">
-                    </div>
+                </div>
+                <div class="mt-5">
                     <div class="col">
                         <button type="button" class="btn btn-outline-secondary" onclick="showHide();">Optional
                             arguements</button>
@@ -132,7 +144,8 @@
                 <div class="row g-3 row-cols-2">
                     <!-- <button type="button" class="btn btn-outline-secondary btn-sm" onclick="addForm()">Add
                         more</button> -->
-                    <button type="button" id="proceed_demultiplexing" class="btn btn-outline-secondary btn-sm" onclick="sendDemultiplexing()">Proceed</button>
+                    <button type="button" id="proceed_demultiplexing" class="btn btn-outline-secondary btn-sm"
+                        onclick="sendDemultiplexing()">Proceed</button>
                 </div>
             </div>
         </form>

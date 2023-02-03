@@ -62,6 +62,13 @@ function Validate(oForm) {
     return true;
 }
 
+function addFormReferenceOrganism() {
+    var original = document.getElementById("reference_organism");
+    var new_form = original.cloneNode(true);
+    var where_form = document.getElementById("references_organisms");
+    where_form.appendChild(new_form);
+}
+
 
 
 
