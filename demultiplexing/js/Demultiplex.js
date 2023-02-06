@@ -3,19 +3,19 @@ class  Demultiplex{
     fastq2;
     outdir;
     refGenomes;
-    sampleNames;
+    organismName;
     threads;
     nreadsPerChunk;
     replace;
     skipRemovingTmpFiles;
     witDB;
     // constructor
-    constructor(fastq1, fastq2, outdir, refGenomes,sampleNames, threads, nreadsPerChunk, replace, skipRemovingTmpFiles, wtDB) {
+    constructor(fastq1, fastq2, outdir, refGenomes,organismName, threads, nreadsPerChunk, replace, skipRemovingTmpFiles, wtDB) {
         this.fastq1 = fastq1;
         this.fastq2 = fastq2;
         this.outdir = outdir;
         this.refGenomes = refGenomes;
-        this.sampleNames = sampleNames;
+        this.organismName = organismName;
         this.threads = threads;
         this.nreadsPerChunk = nreadsPerChunk;
         this.replace = replace;
@@ -39,8 +39,8 @@ class  Demultiplex{
     getRefGenomes() {
         return this.refGenomes;
     }
-    getSampleNames() {
-        return this.sampleNames;
+    getorganismName() {
+        return this.organismName;
     }
     getThreads() {
         return this.threads;
@@ -70,8 +70,8 @@ class  Demultiplex{
     setRefGenomes(refGenomes) {
         this.refGenomes = refGenomes;
     }
-    setSampleNames(sampleNames) {
-        this.sampleNames = sampleNames;
+    setorganismName(organismName) {
+        this.organismName = organismName;
     }
     setThreads(threads) {
         this.threads = threads;
