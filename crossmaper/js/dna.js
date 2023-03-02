@@ -52,11 +52,12 @@ function sendDna_v2() {
     var objects = [];
 
     var form_fasta = document.querySelectorAll("#form_fasta");
-    var fastaq = document.querySelectorAll("#fastaq");
-    var genomeName = document.querySelectorAll("#genome_name");
-    var readLength = document.getElementById("read_length");
+    var fastaq = document.querySelectorAll("#fastaq"); //check
+    var genomeName = document.querySelectorAll("#genome_name");//check
+    // var readLength = document.getElementById("read_length");
+    var readLength = document.querySelectorAll("#read_length");
     var readConfiguration = document.getElementById("read_configuration");
-    var numberOfReads = document.querySelectorAll("#number_of_reads");
+    var numberOfReads = document.querySelectorAll("#number_of_reads"); //check
     var numberofcores = document.getElementById("number_of_cores");
     var baseerorrate = document.getElementById("base_error_rate");
     var outerDistance = document.getElementById("outer_distance");
@@ -78,12 +79,53 @@ function sendDna_v2() {
     var mismatchPenalty = document.getElementById("mismatch_penalty");
     var total_obj = form_fasta.length;
 
-
-    for (var i = 0; i < total_obj; i++) {
-        var dnaParams = new DnaParams(fastaq[i].value, genomeName[i].value, readLength.value, readConfiguration.value, numberOfReads[i].value, numberofcores.value, baseerorrate.value, outerDistance.value, standarDeviation.value, coverage.value, mutationRate.value, indelFraction.value, indelExtended.value, seedRandomGenerator.value, discarambiguous.value, haplotypeMode.value, outputDirectory.value, verboseMode.value, groupBarChart.value, reportCrossMapped.value, mapperTemplatePath.value, minSeedLength.value, matchingScore.value, mismatchPenalty.value);
-        var dnaJSON = JSON.stringify(dnaParams);
-        objects.push(dnaJSON);
+    fastaqArr = []
+    for(var i = 0;i<fastaq.length;i++){
+        fastaq[i]
+        // fastaqArr.push(fastaq[i].value);
+        fastaqArr.push(fastaq[i].files[0].name);
     }
+    fastq_ls_string = fastaqArr.join(" ");
 
-    console.log(objects);
+    gnArr = []
+    for(var i = 0;i<genomeName.length;i++){
+        genomeName[i]
+        gnArr.push(genomeName[i].value);
+    }
+    genome_name_string = gnArr.join(" ");
+
+    numberOfReadsArr = []
+    for(var i = 0;i<numberOfReads.length;i++){
+        numberOfReads[i]
+        numberOfReadsArr.push(numberOfReads[i].value);
+    }
+    number_of_reads_string = numberOfReadsArr.join(" ");
+
+    readLengthArr = []
+    for(var i = 0;i<readLength.length;i++){
+        readLength[i]
+        readLengthArr.push(readLength[i].value);
+    }
+    read_length_string = readLengthArr.join(" ");
+
+    var dnaParams = new DnaParams(fastaqArr, gnArr , readLengthArr, readConfiguration.value, numberOfReadsArr, numberofcores.value, baseerorrate.value, outerDistance.value, standarDeviation.value, coverage.value, mutationRate.value, indelFraction.value, indelExtended.value, seedRandomGenerator.value, discarambiguous.value, haplotypeMode.value, outputDirectory.value, verboseMode.value, groupBarChart.value, reportCrossMapped.value, mapperTemplatePath.value, minSeedLength.value, matchingScore.value, mismatchPenalty.value);
+    param = `crossmapper DNA -g ${fastq_ls_string} -gn ${genome_name_string} -rlen ${read_length_string} -rlay ${readConfiguration.value} -N ${number_of_reads_string} -t ${numberofcores.value} -e ${baseerorrate.value} -d ${outerDistance.value} -s ${standarDeviation.value} -C ${coverage.value} -r ${mutationRate.value} -R ${indelFraction.value} -X ${indelExtended.value} -S ${seedRandomGenerator.value} -AMB ${discarambiguous.value} -hapl ${haplotypeMode.value} -o ${outputDirectory.value} --verbose ${verboseMode.value} -gb ${groupBarChart.value} -rc ${reportCrossMapped.value} --mapper-template ${mapperTemplatePath.value} -k ${minSeedLength.value} -A ${matchingScore.value} -B ${mismatchPenalty.value}`
+
+    // var dnaJSON = JSON.stringify(dnaParams);
+        // objects.push(dnaJSON);
+    // objects.push(dnaParams);
+
+
+    // for (var i = 0; i < total_obj; i++) {
+    //     var dnaParams = new DnaParams(fastaq[i].value, genomeName[i].value, readLength.value, readConfiguration.value, numberOfReads[i].value, numberofcores.value, baseerorrate.value, outerDistance.value, standarDeviation.value, coverage.value, mutationRate.value, indelFraction.value, indelExtended.value, seedRandomGenerator.value, discarambiguous.value, haplotypeMode.value, outputDirectory.value, verboseMode.value, groupBarChart.value, reportCrossMapped.value, mapperTemplatePath.value, minSeedLength.value, matchingScore.value, mismatchPenalty.value);
+    //     // var dnaJSON = JSON.stringify(dnaParams);
+    //     // objects.push(dnaJSON);
+    //     objects.push(dnaParams);
+    // }
+
+    // console.log(objects);
+    console.log(dnaParams);
+    // console.log("================================")
+    console.log(param)
+    document.getElementById('command').innerHTML = `crossmapper DNA -g ${fastq_ls_string} -gn ${genome_name_string} -rlen ${read_length_string} -rlay ${readConfiguration.value} -N ${number_of_reads_string} -t ${numberofcores.value} -e ${baseerorrate.value} -d ${outerDistance.value} -s ${standarDeviation.value} -C ${coverage.value} -r ${mutationRate.value} -R ${indelFraction.value} -X ${indelExtended.value} -S ${seedRandomGenerator.value} -AMB ${discarambiguous.value} -hapl ${haplotypeMode.value} -o ${outputDirectory.value} --verbose ${verboseMode.value} -gb ${groupBarChart.value} -rc ${reportCrossMapped.value} --mapper-template ${mapperTemplatePath.value} -k ${minSeedLength.value} -A ${matchingScore.value} -B ${mismatchPenalty.value}`
 }
