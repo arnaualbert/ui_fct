@@ -73,6 +73,8 @@ function sendRna_v2() {
     var maxMissmatch = document.getElementById("max_mismatch");
     var starTmp = document.getElementById("star_temp");
     var total_obj = form_fasta.length;
+    
+    // var rnaParams = new RnaParams(fastaq[i].value, genomeName[i].value, readLength[0].value, readConfiguration.value, numberOfReads[i].value, annotationsgtf[i].value, numberofcores.value, baseerorrate.value, outerDistance.value, standarDeviation.value, coverage.value, mutationRate.value, indelFraction.value, indelExtended.value, seedRandomGenerator.value, discarambiguous.value, haplotypeMode.value, outputDirectory.value, verboseMode.value, groupBarChart.value, reportCrossMapped.value, mapperTemplatePath.value, maxMissmatchPerLen.value, bacterialMode.value, maxMissmatch.value, starTmp.value)
 
     for (let i = 0; i < total_obj; i++) {
         var rnaParams = new RnaParams(fastaq[i].value, genomeName[i].value, readLength[0].value, readConfiguration.value, numberOfReads[i].value, annotationsgtf[i].value, numberofcores.value, baseerorrate.value, outerDistance.value, standarDeviation.value, coverage.value, mutationRate.value, indelFraction.value, indelExtended.value, seedRandomGenerator.value, discarambiguous.value, haplotypeMode.value, outputDirectory.value, verboseMode.value, groupBarChart.value, reportCrossMapped.value, mapperTemplatePath.value, maxMissmatchPerLen.value, bacterialMode.value, maxMissmatch.value, starTmp.value)
@@ -83,4 +85,57 @@ function sendRna_v2() {
     }
 
     console.log(objects);
+
+
+
+    fastaqArr = []
+    for(var i = 0;i<fastaq.length;i++){
+        fastaq[i]
+        // fastaqArr.push(fastaq[i].value);
+        fastaqArr.push(fastaq[i].files[0].name);
+    }
+    fastq_ls_string = fastaqArr.join(" ");
+
+    gnArr = []
+    for(var i = 0;i<genomeName.length;i++){
+        genomeName[i]
+        gnArr.push(genomeName[i].value);
+    }
+    genome_name_string = gnArr.join(" ");
+
+    readLengthArr = []
+    for(var i = 0;i<readLength.length;i++){
+        readLength[i]
+        readLengthArr.push(readLength[i].value);
+    }
+    read_length_string = readLengthArr.join(",");
+
+    numberOfReadsArr = []
+    for(var i = 0;i<numberOfReads.length;i++){
+        numberOfReads[i]
+        numberOfReadsArr.push(numberOfReads[i].value);
+    }
+    number_of_reads_string = numberOfReadsArr.join(" ");
+
+
+    annotationsgtfarr = []
+    for(var i = 0;i<annotationsgtf.length;i++){
+        annotationsgtf[i]
+        // fastaqArr.push(fastaq[i].value);
+        annotationsgtfarr.push(annotationsgtf[i].files[0].name);
+    }
+    annotations_gtf_ls_string = fastaqArr.join(" ");
+    // annotationsgtfarr = []
+    // for(var i = 0;annotationsgtf.length;i++){
+    //     a = annotationsgtf[i].value
+    //     annotationsgtfarr.push(annotationsgtf[i].value);
+    // }
+    // annotations_gtf_ls_string = annotationsgtfarr.join(" ");
+
+    // var rnaParams = new RnaParams(fastaq[i].value, genomeName[i].value, readLength[0].value, readConfiguration.value, numberOfReads[i].value, annotationsgtf[i].value, numberofcores.value, baseerorrate.value, outerDistance.value, standarDeviation.value, coverage.value, mutationRate.value, indelFraction.value, indelExtended.value, seedRandomGenerator.value, discarambiguous.value, haplotypeMode.value, outputDirectory.value, verboseMode.value, groupBarChart.value, reportCrossMapped.value, mapperTemplatePath.value, maxMissmatchPerLen.value, bacterialMode.value, maxMissmatch.value, starTmp.value)
+    // param = `crossmapp RNA -g ${fastq_ls_string} -gn ${genome_name_string} -rlen ${read_length_string} -rlay ${readConfiguration.value} -N ${number_of_reads_string} -a ${annotations_gtf_ls_string} -t ${numberofcores.value} -e ${baseerorrate.value} -d ${outerDistance.value} -s ${standarDeviation.value} -C ${coverage.value} -r ${mutationRate.value} -R ${indelFraction.value} -X ${indelExtended.value} -S ${seedRandomGenerator.value} -AMB ${discarambiguous.value} -hapl ${haplotypeMode.value} -o ${outputDirectory.value} --verbose ${verboseMode.value} -gb ${groupBarChart.value} -rc ${reportCrossMapped.value} --mapper-template ${mapperTemplatePath.value} -max_mismatch_per_len ${maxMissmatchPerLen.value} -bact_mode ${bacterialMode.value} -max_mismatch ${maxMissmatch.value} -star_tmp ${starTmp.value}`
+    ///// NEED TO SOLVE PROBLEM WITH -a ${annotations_gtf_ls_string}
+    document.getElementById('command').innerHTML = `crossmapp RNA -g ${fastq_ls_string} -gn ${genome_name_string} -rlen ${read_length_string} -rlay ${readConfiguration.value} -N ${number_of_reads_string} -a ${annotations_gtf_ls_string} -t ${numberofcores.value} -e ${baseerorrate.value} -d ${outerDistance.value} -s ${standarDeviation.value} -C ${coverage.value} -r ${mutationRate.value} -R ${indelFraction.value} -X ${indelExtended.value} -S ${seedRandomGenerator.value} -AMB ${discarambiguous.value} -hapl ${haplotypeMode.value} -o ${outputDirectory.value} --verbose ${verboseMode.value} -gb ${groupBarChart.value} -rc ${reportCrossMapped.value} --mapper-template ${mapperTemplatePath.value} -max_mismatch_per_len ${maxMissmatchPerLen.value} -bact_mode ${bacterialMode.value} -max_mismatch ${maxMissmatch.value} -star_tmp ${starTmp.value}`
+    // document.getElementById('command').innerHTML = `crossmapp RNA -g ${fastq_ls_string} -gn ${genome_name_string} -rlen ${read_length_string} -rlay ${readConfiguration.value} -N ${number_of_reads_string} -a ${annotations_gtf_ls_string} -t ${numberofcores.value} -e ${baseerorrate.value} -d ${outerDistance.value} -s ${standarDeviation.value} -C ${coverage.value} -r ${mutationRate.value} -R ${indelFraction.value} -X ${indelExtended.value} -S ${seedRandomGenerator.value} -AMB ${discarambiguous.value} -hapl ${haplotypeMode.value} -o ${outputDirectory.value} --verbose ${verboseMode.value} -gb ${groupBarChart.value} -rc ${reportCrossMapped.value} --mapper-template ${mapperTemplatePath.value} -max_mismatch_per_len ${maxMissmatchPerLen.value} -bact_mode ${bacterialMode.value} -max_mismatch ${maxMissmatch.value} -star_tmp ${starTmp.value}`
+
 }
