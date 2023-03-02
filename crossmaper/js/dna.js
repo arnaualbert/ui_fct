@@ -107,6 +107,7 @@ function sendDna_v2() {
         readLengthArr.push(readLength[i].value);
     }
     read_length_string = readLengthArr.join(",");
+    console.log(read_length_string);
 
     var dnaParams = new DnaParams(fastaqArr, gnArr , readLengthArr, readConfiguration.value, numberOfReadsArr, numberofcores.value, baseerorrate.value, outerDistance.value, standarDeviation.value, coverage.value, mutationRate.value, indelFraction.value, indelExtended.value, seedRandomGenerator.value, discarambiguous.value, haplotypeMode.value, outputDirectory.value, verboseMode.value, groupBarChart.value, reportCrossMapped.value, mapperTemplatePath.value, minSeedLength.value, matchingScore.value, mismatchPenalty.value);
     param = `crossmapper DNA -g ${fastq_ls_string} -gn ${genome_name_string} -rlen ${read_length_string} -rlay ${readConfiguration.value} -N ${number_of_reads_string} -t ${numberofcores.value} -e ${baseerorrate.value} -d ${outerDistance.value} -s ${standarDeviation.value} -C ${coverage.value} -r ${mutationRate.value} -R ${indelFraction.value} -X ${indelExtended.value} -S ${seedRandomGenerator.value} -AMB ${discarambiguous.value} -hapl ${haplotypeMode.value} -o ${outputDirectory.value} --verbose ${verboseMode.value} -gb ${groupBarChart.value} -rc ${reportCrossMapped.value} --mapper-template ${mapperTemplatePath.value} -k ${minSeedLength.value} -A ${matchingScore.value} -B ${mismatchPenalty.value}`
