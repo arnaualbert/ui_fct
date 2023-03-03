@@ -121,76 +121,14 @@ function sendDemultiplexing() {
     var skipRemovingTmpFilesFrom = document.querySelectorAll("#skip_removing_tmp_files");
     var witDB = document.querySelectorAll("#wit_db");
     var total_obj = total_forms.length;
-
-    fasta0q = [];
-    fsata1q = [];
-    var replacementsarray = [];
-
-    for(var i=0;i<fasta0.length;i++){
-        fasta0q.push(fasta0[i].files[0].name);
-    }
-    fasta0q_ls_string = fasta0q.join(" ");
-
-    for(var i=0;i<fasta1.length;i++){
-        fsata1q.push(fasta1[i].files[0].name);
-    }
-    fasta1q_ls_string = fsata1q.join(" ");
-    for(let i = 0;i < replacements.length;i++){
-        if(replacements[i].files.length > 0){
-        replacementsarray.push(replacements[i].files[0].name);}else{
-            replacementsarray.push()
-        }
-        console.log(replacements[i].files.length)
-    }
-    replacements_ls = replacementsarray.join(" ");
-
-    //array
     var organismNamearray = [];
     var referencesgenomesarray = [];
-    var output_dirarr = [];
-    var numberofthreadsarr = [];
-    var readsperchunkarr = [];
-    var skipRemovingTmpFilesFromarr = [];
-    var witDBarr = [];
-    //loops
     for(let i = 0;i<refGenomes.length;i++){
         referencesgenomesarray.push(refGenomes[i].value);
     }
     for(let i = 0;i < organismName.length;i++){
         organismNamearray.push(organismName[i].value);    
     }
-    //////////////  ///////////////////////////////////  //////////////////////////////////
-    for(let i = 0;i < numberofthreads.length;i++){
-        numberofthreadsarr.push(numberofthreads[i].value);    
-    }
-    for(let i = 0;i < readsperchunk.length;i++){
-        readsperchunkarr.push(readsperchunk[i].value);    
-    }
-    for(let i = 0;i < skipRemovingTmpFilesFrom.length;i++){
-        skipRemovingTmpFilesFromarr.push(skipRemovingTmpFilesFrom[i].value);    
-    }
-    for(let i = 0;i < witDB.length;i++){
-        witDBarr.push(witDB[i].value);    
-    }
-    for(let i = 0;i < output_dir.length;i++){
-        output_dirarr.push(output_dir[i].value);    
-    }
-    //list
-    referencegenomes = referencesgenomesarray.join(" ");
-    organism_ls = organismNamearray.join(" ");
-    ////////////////////////////////////////////////////////////////
-    num_of_threads = numberofthreadsarr.join(" ");
-    reads_per_chunk = readsperchunkarr.join(" ");
-    skip_removing_tmp_files = skipRemovingTmpFilesFromarr.join(" ");
-    wit_db = witDBarr.join(" ");
-    output_dir = output_dirarr.join(" ");
-
-
-    
-    //new Demultiplex(fasta0[i].value, fasta1[i].value, output_dir[i].value, refGenomes[i].value, organismName[i].value, numberofthreads[i].value, readsperchunk[i].value, replacements[i].value, skipRemovingTmpFilesFrom[i].value, witDB[i].value)
-    //param = `--fastq1 ${fastas_fs_ls_string} --fastq2 ${fastas_rv_ls_string} --outdir ${output_dir} --refGenomes ${ref_genome_string} --sampleNames ${organism_name_string} --trheads ${num_of_threads} --nreads_per_chunk ${reads_per_chunk} --replace ${rpl_ls_str} --skip_removing_tmp_files ${skip_removing_tmp_files} --wit_db ${wit_db}`
-
-    document.getElementById('command').innerHTML = `-fastq1 ${fasta0q_ls_string} --fastq2 ${fasta1q_ls_string} --outdir ${output_dir} --refGenomes ${referencegenomes} --sampleNames ${organism_ls} --trheads ${num_of_threads} --nreads_per_chunk ${reads_per_chunk} --replace ${replacements_ls} --skip_removing_tmp_files ${skip_removing_tmp_files} --wit_db ${wit_db}`
 
     // var listofifle = [];
     // for (i = 0; i < fasta0.length; i++) {
@@ -199,32 +137,24 @@ function sendDemultiplexing() {
     //     // do things with file
     // }
     // console.log(listofifle)
-
-    // for (let i = 0; i < total_obj; i++) {
-    //     if (fasta0[i].value != "" && fasta1[i].value != "" && output_dir[i].value != "" && refGenomes[i].value != "" && organismName[i].value != "" && !isNaN(numberofthreads[i].value) && !isNaN(readsperchunk[i].value)) {
-    //         if (!isNaN(numberofthreads[i].value) && !isNaN(readsperchunk[i].value)) {
-    //             var demultiplex_params = new Demultiplex(fasta0[i].value, fasta1[i].value, output_dir[i].value, referencesgenomesarray, organismNamearray, numberofthreads[i].value, readsperchunk[i].value, replacements[i].value, skipRemovingTmpFilesFrom[i].value, witDB[i].value)
-    //             objects.push(demultiplex_params);
-    //         } else {
-    //             numberofthreads[i].value = "16";
-    //             readsperchunk[i].value = "";
-    //             var demultiplex_params = new Demultiplex(fasta0[i].value, fasta1[i].value, output_dir[i].value, refGenomes[i].value, organismName[i].value, numberofthreads[i].value, readsperchunk[i].value, replacements[i].value, skipRemovingTmpFilesFrom[i].value, witDB[i].value)
-    //             var demultiplexJSON = JSON.stringify(demultiplex_params);
-    //             objects.push(demultiplexJSON);
-    //         }
-    //     } else {
-    //         alert("Please fill in all the required fields");
-    //         objects = null;
-    //     }
-    // }
-    // console.log(objects);
-
-
-
-
-
-    // new Demultiplex(fasta0[i].value, fasta1[i].value, output_dir[i].value, refGenomes[i].value, organismName[i].value, numberofthreads[i].value, readsperchunk[i].value, replacements[i].value, skipRemovingTmpFilesFrom[i].value, witDB[i].value)
-    // param = `--fastq1 ${fastas_fs_ls_string} --fastq2 ${fastas_rv_ls_string} --outdir ${output_dir} --refGenomes ${ref_genome_string} --sampleNames ${organism_name_string} --trheads ${num_of_threads} --nreads_per_chunk ${reads_per_chunk} --replace ${rpl_ls_str} --skip_removing_tmp_files ${skip_removing_tmp_files} --wit_db ${wit_db}`
+    for (let i = 0; i < total_obj; i++) {
+        if (fasta0[i].value != "" && fasta1[i].value != "" && output_dir[i].value != "" && refGenomes[i].value != "" && organismName[i].value != "" && !isNaN(numberofthreads[i].value) && !isNaN(readsperchunk[i].value)) {
+            if (!isNaN(numberofthreads[i].value) && !isNaN(readsperchunk[i].value)) {
+                var demultiplex_params = new Demultiplex(fasta0[i].value, fasta1[i].value, output_dir[i].value, referencesgenomesarray, organismNamearray, numberofthreads[i].value, readsperchunk[i].value, replacements[i].value, skipRemovingTmpFilesFrom[i].value, witDB[i].value)
+                objects.push(demultiplex_params);
+            } else {
+                numberofthreads[i].value = "16";
+                readsperchunk[i].value = "";
+                var demultiplex_params = new Demultiplex(fasta0[i].value, fasta1[i].value, output_dir[i].value, refGenomes[i].value, organismName[i].value, numberofthreads[i].value, readsperchunk[i].value, replacements[i].value, skipRemovingTmpFilesFrom[i].value, witDB[i].value)
+                var demultiplexJSON = JSON.stringify(demultiplex_params);
+                objects.push(demultiplexJSON);
+            }
+        } else {
+            alert("Please fill in all the required fields");
+            objects = null;
+        }
+    }
+    console.log(objects);
 
 
 }
