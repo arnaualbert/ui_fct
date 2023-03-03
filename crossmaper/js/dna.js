@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-
+    document.getElementById('showcommand').style.display = 'none';
     // select all the optional arguments
     var optionalArguments = document.querySelectorAll('#optional_arguments');
     // loop the array of all the optional arguments and hide them
@@ -128,5 +128,7 @@ function sendDna_v2() {
     console.log(dnaParams);
     // console.log("================================")
     console.log(param)
+    document.getElementById('showcommand').style.display = 'block';
+
     document.getElementById('command').innerHTML = `crossmapper DNA -g ${fastq_ls_string} -gn ${genome_name_string} -rlen ${read_length_string} -rlay ${readConfiguration.value} -N ${number_of_reads_string} -t ${numberofcores.value} -e ${baseerorrate.value} -d ${outerDistance.value} -s ${standarDeviation.value} -C ${coverage.value} -r ${mutationRate.value} -R ${indelFraction.value} -X ${indelExtended.value} -S ${seedRandomGenerator.value} -AMB ${discarambiguous.value} -hapl ${haplotypeMode.value} -o ${outputDirectory.value} --verbose ${verboseMode.value} -gb ${groupBarChart.value} -rc ${reportCrossMapped.value} --mapper-template ${mapperTemplatePath.value} -k ${minSeedLength.value} -A ${matchingScore.value} -B ${mismatchPenalty.value}`
 }

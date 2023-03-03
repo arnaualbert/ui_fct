@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-
+    document.getElementById('showcommand').style.display = 'none';
     // select all the optional arguments
     var optionalArguments = document.querySelectorAll('#optional_arguments');
     // loop the array of all the optional arguments and hide them
@@ -34,7 +34,7 @@ function addForm() {
 }
 
 // only fasta,gz files are allowed
-var _validFileExtensions = ["fastq.gz"];    
+var _validFileExtensions = ["fastq.gz"];
 function Validate(oForm) {
     var arrInputs = oForm.getElementsByTagName("input");
     for (var i = 0; i < arrInputs.length; i++) {
@@ -50,7 +50,7 @@ function Validate(oForm) {
                         break;
                     }
                 }
-                
+
                 if (!blnValid) {
                     alert("Sorry, " + sFileName + " is invalid, allowed extensions are: " + _validFileExtensions.join(", "));
                     return false;
@@ -58,7 +58,7 @@ function Validate(oForm) {
             }
         }
     }
-  
+
     return true;
 }
 
@@ -102,7 +102,14 @@ function addFormReferenceOrganism() {
 
 // }
 
-
+function copiarAlPortapapeles(id_elemento) {
+    var aux = document.createElement("input");
+    aux.setAttribute("value", document.getElementById(id_elemento).innerHTML);
+    document.body.appendChild(aux);
+    aux.select();
+    document.execCommand("copy");
+    document.body.removeChild(aux);
+}
 
 
 // get all the parameters and create the Demultiplex object , then add it to the array
@@ -128,11 +135,11 @@ function sendDemultiplexing() {
     fwd_regex = /\w+\/?\w+R1\.\w*\.\w+/gm;
     rv_regex = /\w+\/?\w+R2\.\w*\.\w+/gm;
     var replacementsarray = [];
-    for(var i = 0; i < fastas[0].files.length; i++){
+    for (var i = 0; i < fastas[0].files.length; i++) {
         console.log(fastas[0].files[i].name);
-        if(fwd_regex.test(fastas[0].files[i].name)){
+        if (fwd_regex.test(fastas[0].files[i].name)) {
             fasta0q.push(fastas[0].files[i].name);
-        }else if(rv_regex.test(fastas[0].files[i].name)){
+        } else if (rv_regex.test(fastas[0].files[i].name)) {
             fsata1q.push(fastas[0].files[i].name);
         }
     }
@@ -145,9 +152,10 @@ function sendDemultiplexing() {
     //     fsata1q.push(fasta1[0].files[i].name);
     // }
     fasta1q_ls_string = fsata1q.join(" ");
-    for(let i = 0;i < replacements.length;i++){
-        if(replacements[i].files.length > 0){
-        replacementsarray.push(replacements[i].files[0].name);}else{
+    for (let i = 0; i < replacements.length; i++) {
+        if (replacements[i].files.length > 0) {
+            replacementsarray.push(replacements[i].files[0].name);
+        } else {
             replacementsarray.push()
         }
         console.log(replacements[i].files.length)
@@ -163,27 +171,27 @@ function sendDemultiplexing() {
     var skipRemovingTmpFilesFromarr = [];
     var witDBarr = [];
     //loops
-    for(let i = 0;i<refGenomes.length;i++){
+    for (let i = 0; i < refGenomes.length; i++) {
         referencesgenomesarray.push(refGenomes[i].value);
     }
-    for(let i = 0;i < organismName.length;i++){
-        organismNamearray.push(organismName[i].value);    
+    for (let i = 0; i < organismName.length; i++) {
+        organismNamearray.push(organismName[i].value);
     }
     //////////////  ///////////////////////////////////  //////////////////////////////////
-    for(let i = 0;i < numberofthreads.length;i++){
-        numberofthreadsarr.push(numberofthreads[i].value);    
+    for (let i = 0; i < numberofthreads.length; i++) {
+        numberofthreadsarr.push(numberofthreads[i].value);
     }
-    for(let i = 0;i < readsperchunk.length;i++){
-        readsperchunkarr.push(readsperchunk[i].value);    
+    for (let i = 0; i < readsperchunk.length; i++) {
+        readsperchunkarr.push(readsperchunk[i].value);
     }
-    for(let i = 0;i < skipRemovingTmpFilesFrom.length;i++){
-        skipRemovingTmpFilesFromarr.push(skipRemovingTmpFilesFrom[i].value);    
+    for (let i = 0; i < skipRemovingTmpFilesFrom.length; i++) {
+        skipRemovingTmpFilesFromarr.push(skipRemovingTmpFilesFrom[i].value);
     }
-    for(let i = 0;i < witDB.length;i++){
-        witDBarr.push(witDB[i].value);    
+    for (let i = 0; i < witDB.length; i++) {
+        witDBarr.push(witDB[i].value);
     }
-    for(let i = 0;i < output_dir.length;i++){
-        output_dirarr.push(output_dir[i].value);    
+    for (let i = 0; i < output_dir.length; i++) {
+        output_dirarr.push(output_dir[i].value);
     }
     //list
     referencegenomes = referencesgenomesarray.join(" ");
@@ -196,11 +204,12 @@ function sendDemultiplexing() {
     output_dir = output_dirarr.join(" ");
 
 
-    
+
     //new Demultiplex(fasta0[i].value, fasta1[i].value, output_dir[i].value, refGenomes[i].value, organismName[i].value, numberofthreads[i].value, readsperchunk[i].value, replacements[i].value, skipRemovingTmpFilesFrom[i].value, witDB[i].value)
     //param = `--fastq1 ${fastas_fs_ls_string} --fastq2 ${fastas_rv_ls_string} --outdir ${output_dir} --refGenomes ${ref_genome_string} --sampleNames ${organism_name_string} --trheads ${num_of_threads} --nreads_per_chunk ${reads_per_chunk} --replace ${rpl_ls_str} --skip_removing_tmp_files ${skip_removing_tmp_files} --wit_db ${wit_db}`
+    document.getElementById('showcommand').style.display = 'block';
+    document.getElementById('command').innerHTML = `split_pooledSeqWGS_parallel.py -fastq1 ${fasta0q_ls_string} --fastq2 ${fasta1q_ls_string} --outdir ${output_dir} --refGenomes ${referencegenomes} --sampleNames ${organism_ls} --trheads ${num_of_threads} --nreads_per_chunk ${reads_per_chunk} --replace ${replacements_ls} --skip_removing_tmp_files ${skip_removing_tmp_files} --wit_db ${wit_db}`
 
-   document.getElementById('command').innerHTML = `split_pooledSeqWGS_parallel.py -fastq1 ${fasta0q_ls_string} --fastq2 ${fasta1q_ls_string} --outdir ${output_dir} --refGenomes ${referencegenomes} --sampleNames ${organism_ls} --trheads ${num_of_threads} --nreads_per_chunk ${reads_per_chunk} --replace ${replacements_ls} --skip_removing_tmp_files ${skip_removing_tmp_files} --wit_db ${wit_db}`
 
     // var listofifle = [];
     // for (i = 0; i < fasta0.length; i++) {
