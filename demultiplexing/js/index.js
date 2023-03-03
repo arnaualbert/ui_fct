@@ -190,7 +190,7 @@ function sendDemultiplexing() {
     //new Demultiplex(fasta0[i].value, fasta1[i].value, output_dir[i].value, refGenomes[i].value, organismName[i].value, numberofthreads[i].value, readsperchunk[i].value, replacements[i].value, skipRemovingTmpFilesFrom[i].value, witDB[i].value)
     //param = `--fastq1 ${fastas_fs_ls_string} --fastq2 ${fastas_rv_ls_string} --outdir ${output_dir} --refGenomes ${ref_genome_string} --sampleNames ${organism_name_string} --trheads ${num_of_threads} --nreads_per_chunk ${reads_per_chunk} --replace ${rpl_ls_str} --skip_removing_tmp_files ${skip_removing_tmp_files} --wit_db ${wit_db}`
 
-    document.getElementById('command').innerHTML = `-fastq1 ${fasta0q_ls_string} --fastq2 ${fasta1q_ls_string} --outdir ${output_dir} --refGenomes ${referencegenomes} --sampleNames ${organism_ls} --trheads ${num_of_threads} --nreads_per_chunk ${reads_per_chunk} --replace ${replacements_ls} --skip_removing_tmp_files ${skip_removing_tmp_files} --wit_db ${wit_db}`
+    document.getElementById('command').innerHTML = `split_pooledSeqWGS_parallel.py -fastq1 ${fasta0q_ls_string} --fastq2 ${fasta1q_ls_string} --outdir ${output_dir} --refGenomes ${referencegenomes} --sampleNames ${organism_ls} --trheads ${num_of_threads} --nreads_per_chunk ${reads_per_chunk} --replace ${replacements_ls} --skip_removing_tmp_files ${skip_removing_tmp_files} --wit_db ${wit_db}`
 
     // var listofifle = [];
     // for (i = 0; i < fasta0.length; i++) {
