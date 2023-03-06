@@ -132,17 +132,39 @@ function sendDemultiplexing() {
 
     fasta0q = [];
     fsata1q = [];
-    fwd_regex = /\w+\/?\w+R1\.\w*\.\w+/gm;
-    rv_regex = /\w+\/?\w+R2\.\w*\.\w+/gm;
+    // fwd_regex = /\w+\/?\w+R1\.\w*\.\w+/gm; ^.*R1\b.*$
+    // rv_regex = /\w+\/?\w+R2\.\w*\.\w+/gm; ^.*R2\b.*$
+    fwd_regex = /^.*R1\b.*$/gm;
+    rv_regex = /^.*R2\b.*$/gm;
     var replacementsarray = [];
+
+
+
     for (var i = 0; i < fastas[0].files.length; i++) {
         console.log(fastas[0].files[i].name);
-        if (fwd_regex.test(fastas[0].files[i].name)) {
+        if (/R1\./.test(fastas[0].files[i].name)) {
             fasta0q.push(fastas[0].files[i].name);
-        } else if (rv_regex.test(fastas[0].files[i].name)) {
+            console.log('fwd R1')
+        } else if (/R2\./.test(fastas[0].files[i].name)) {
             fsata1q.push(fastas[0].files[i].name);
+            console.log('rv R2')
         }
     }
+
+
+    // for (var i = 0; i < fastas[0].files.length; i++) {
+    //     console.log(fastas[0].files[i].name);
+    //     if (fwd_regex.test(fastas[0].files[i].name)) {
+    //         fasta0q.push(fastas[0].files[i].name);
+    //         console.log('fwd R1')
+    //     } else if (rv_regex.test(fastas[0].files[i].name)) {
+    //         fsata1q.push(fastas[0].files[i].name);
+    //         console.log('rv R2')
+    //     }
+    // }
+
+
+
     // for(var i=0;i<fasta0[0].files.length;i++){
     //     fasta0q.push(fasta0.files[i].name);
     // }
