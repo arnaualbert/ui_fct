@@ -13,6 +13,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
 })
 
+function copiarAlPortapapeles(id_elemento) {
+    var aux = document.createElement("input");
+    aux.setAttribute("value", document.getElementById(id_elemento).innerHTML);
+    document.body.appendChild(aux);
+    aux.select();
+    document.execCommand("copy");
+    document.body.removeChild(aux);
+}
+
 // when the button is clicked hide all the optional arguments if they are present or show all the optional arguments if they are not shown
 function showHideRna() {
     var optionalArguments = document.querySelectorAll('#optional_arguments');
