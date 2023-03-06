@@ -134,8 +134,8 @@ function sendDemultiplexing() {
     fsata1q = [];
     // fwd_regex = /\w+\/?\w+R1\.\w*\.\w+/gm; ^.*R1\b.*$
     // rv_regex = /\w+\/?\w+R2\.\w*\.\w+/gm; ^.*R2\b.*$
-    fwd_regex = /^.*R1\b.*$/gm;
-    rv_regex = /^.*R2\b.*$/gm;
+    // fwd_regex = /^.*R1\b.*$/gm;
+    // rv_regex = /^.*R2\b.*$/gm;
     var replacementsarray = [];
 
 
