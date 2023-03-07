@@ -61,6 +61,12 @@
                         <button type="button" class="btn btn-outline-secondary btn-sm" onclick="batchmode()">Batch Mode</button>
                     </div> -->
                     <div class="col">
+                        <label for="path_file" class="col-form-label">File Path</label>
+                    </div>
+                    <div class="col">
+                        <input type="text" id="path_file" class="form-control">                        
+                    </div>
+                    <div class="col">
                         <a class="btn btn-outline-secondary btn-sm" href="./indexbatch.html">Batch Mode</a>
                     </div>
                     <div class="col">
@@ -74,7 +80,8 @@
                             <label for="ref_genome" class="col-form-label">Reference Genome</label>
                         </div>
                         <div class="col">
-                            <input type="text" id="ref_genome" class="form-control">
+                            <!-- <input type="text" id="ref_genome" class="form-control"> -->
+                            <input type="file" id="ref_genome" class="form-control">
                         </div>
                         <div class="col">
                             <!-- <label for="sample_name" class="col-form-label">Sample Name</label> -->

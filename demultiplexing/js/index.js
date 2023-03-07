@@ -127,6 +127,7 @@ function sendDemultiplexing() {
     var replacements = document.querySelectorAll("#replace");
     var skipRemovingTmpFilesFrom = document.querySelectorAll("#skip_removing_tmp_files");
     var witDB = document.querySelectorAll("#wit_db");
+    var path_file = document.getElementById("path_file");
     var total_obj = total_forms.length;
 
     fasta0q = [];
@@ -134,12 +135,19 @@ function sendDemultiplexing() {
     var replacementsarray = [];
 
     for(var i=0;i<fasta0.length;i++){
-        fasta0q.push(fasta0[i].files[0].name);
+        // old
+        // fasta0q.push(fasta0[i].files[0].name);    
+        // console.log(fasta0[i].files[0].name);
+        // new
+        fasta0q.push(path_file.value+fasta0[i].files[0].name);    
+        console.log(path_file.value+fasta0[i].files[0].name);
     }
     fasta0q_ls_string = fasta0q.join(" ");
 
     for(var i=0;i<fasta1.length;i++){
-        fsata1q.push(fasta1[i].files[0].name);
+        // fsata1q.push(fasta1[i].files[0].name);
+        // new
+        fsata1q.push(path_file.value+fasta1[i].files[0].name);    
     }
     fasta1q_ls_string = fsata1q.join(" ");
     for(let i = 0;i < replacements.length;i++){
@@ -160,8 +168,12 @@ function sendDemultiplexing() {
     var skipRemovingTmpFilesFromarr = [];
     var witDBarr = [];
     //loops
+    // for(let i = 0;i<refGenomes.length;i++){
+    //     referencesgenomesarray.push(refGenomes[i].value);
+    // }
     for(let i = 0;i<refGenomes.length;i++){
-        referencesgenomesarray.push(refGenomes[i].value);
+        referencesgenomesarray.push(refGenomes[i].files[0].name);
+        // console.log(refGenomes[0].files[0].name);
     }
     for(let i = 0;i < organismName.length;i++){
         organismNamearray.push(organismName[i].value);    
@@ -192,8 +204,8 @@ function sendDemultiplexing() {
     wit_db = witDBarr.join(" ");
     output_dir = output_dirarr.join(" ");
 
-
-    
+    console.log(referencesgenomesarray);
+    console.log(referencegenomes);
     //new Demultiplex(fasta0[i].value, fasta1[i].value, output_dir[i].value, refGenomes[i].value, organismName[i].value, numberofthreads[i].value, readsperchunk[i].value, replacements[i].value, skipRemovingTmpFilesFrom[i].value, witDB[i].value)
     //param = `--fastq1 ${fastas_fs_ls_string} --fastq2 ${fastas_rv_ls_string} --outdir ${output_dir} --refGenomes ${ref_genome_string} --sampleNames ${organism_name_string} --trheads ${num_of_threads} --nreads_per_chunk ${reads_per_chunk} --replace ${rpl_ls_str} --skip_removing_tmp_files ${skip_removing_tmp_files} --wit_db ${wit_db}`
     document.getElementById('showcommand').style.display = 'block';
