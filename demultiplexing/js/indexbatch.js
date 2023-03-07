@@ -143,10 +143,10 @@ function sendDemultiplexing() {
     for (var i = 0; i < fastas[0].files.length; i++) {
         console.log(fastas[0].files[i].name);
         if (/R1\./.test(fastas[0].files[i].name)) {
-            fasta0q.push(fastas[0].files[i].name);
+            fasta0q.push(path_file.value+fastas[0].files[i].name);
             console.log('fwd R1')
         } else if (/R2\./.test(fastas[0].files[i].name)) {
-            fsata1q.push(fastas[0].files[i].name);
+            fsata1q.push(path_file.value+fastas[0].files[i].name);
             console.log('rv R2')
         }
     }
