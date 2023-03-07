@@ -193,8 +193,12 @@ function sendDemultiplexing() {
     var skipRemovingTmpFilesFromarr = [];
     var witDBarr = [];
     //loops
-    for (let i = 0; i < refGenomes.length; i++) {
-        referencesgenomesarray.push(refGenomes[i].value);
+    // for (let i = 0; i < refGenomes.length; i++) {
+    //     referencesgenomesarray.push(refGenomes[i].value);
+    // }
+    for(let i = 0;i<refGenomes.length;i++){
+        referencesgenomesarray.push(refGenomes[i].files[0].name);
+        // console.log(refGenomes[0].files[0].name);
     }
     for (let i = 0; i < organismName.length; i++) {
         organismNamearray.push(organismName[i].value);
