@@ -128,6 +128,7 @@ function sendDemultiplexing() {
     var replacements = document.querySelectorAll("#replace");
     var skipRemovingTmpFilesFrom = document.querySelectorAll("#skip_removing_tmp_files");
     var witDB = document.querySelectorAll("#wit_db");
+    var path_file = document.getElementById("path_file");
     var total_obj = total_forms.length;
 
     fasta0q = [];
