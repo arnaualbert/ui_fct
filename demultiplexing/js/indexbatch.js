@@ -111,6 +111,37 @@ function copiarAlPortapapeles(id_elemento) {
     document.body.removeChild(aux);
 }
 
+function pathquestion() {
+    var getoption = document.getElementById("getoption");
+    // var option_path = document.getElementById("option_path");
+    var yes = document.getElementById("yes");
+    var no = document.getElementById("no");
+    var yespath = document.querySelectorAll("#yespath");
+    var nopath = document.querySelectorAll("#nopath");
+    if (getoption.checked == true) {
+        no.style.display = "none";
+        yes.style.display = "block";
+        for (let i = 0; i < yespath.length; i++) {
+            yespath[i].style.display = "block";
+        }
+        for (let i = 0; i < nopath.length; i++) {
+            nopath[i].style.display = "none";
+        }
+        // yespath.style.display = "block";
+        console.log("yes")
+    } else {
+        no.style.display = "block";
+        yes.style.display = "none";
+        for (let i = 0; i < yespath.length; i++) {
+            yespath[i].style.display = "none";
+        }
+        for (let i = 0; i < nopath.length; i++) {
+            nopath[i].style.display = "block";
+        }
+        // yespath.style.display = "none"
+        console.log("no")
+    }
+}
 
 // get all the parameters and create the Demultiplex object , then add it to the array
 function sendDemultiplexing() {
@@ -129,6 +160,11 @@ function sendDemultiplexing() {
     var skipRemovingTmpFilesFrom = document.querySelectorAll("#skip_removing_tmp_files");
     var witDB = document.querySelectorAll("#wit_db");
     var path_file = document.getElementById("path_file");
+
+    //////////new
+    // var path_files = document.querySelectorAll("#path_files")
+    // var path_file_unique = document.getElementById("path_file_unique")
+    //////////////
     var total_obj = total_forms.length;
 
     fasta0q = [];
@@ -144,10 +180,10 @@ function sendDemultiplexing() {
     for (var i = 0; i < fastas[0].files.length; i++) {
         console.log(fastas[0].files[i].name);
         if (/R1\./.test(fastas[0].files[i].name)) {
-            fasta0q.push(path_file.value+fastas[0].files[i].name);
+            fasta0q.push(path_file.value + fastas[0].files[i].name);
             console.log('fwd R1')
         } else if (/R2\./.test(fastas[0].files[i].name)) {
-            fsata1q.push(path_file.value+fastas[0].files[i].name);
+            fsata1q.push(path_file.value + fastas[0].files[i].name);
             console.log('rv R2')
         }
     }
@@ -197,10 +233,39 @@ function sendDemultiplexing() {
     // for (let i = 0; i < refGenomes.length; i++) {
     //     referencesgenomesarray.push(refGenomes[i].value);
     // }
-    for(let i = 0;i<refGenomes.length;i++){
-        referencesgenomesarray.push(refGenomes[i].files[0].name);
-        // console.log(refGenomes[0].files[0].name);
+
+
+    var getoption = document.getElementById("getoption");
+    var path_files = document.querySelectorAll("#path_files")
+    var path_file_unique = document.getElementById("path_file_unique")
+
+    if (getoption.checked == true) {
+        for (let i = 0; i < refGenomes.length; i++) {
+            console.log(path_file_unique.value+refGenomes[i].files[0].name)
+            referencesgenomesarray.push(path_file_unique.value+refGenomes[i].files[0].name);
+        }
+    } else {
+        refGenomes.forEach((ref1,index)=>{
+            console.log(path_files[index].value+ref1.files[0].name)
+            referencesgenomesarray.push(path_files[index].value+ref1.files[0].name)
+        })
     }
+
+
+    ///old but works
+    // for (let i = 0; i < refGenomes.length; i++) {
+    //     referencesgenomesarray.push(refGenomes[i].files[0].name);
+    //     // console.log(refGenomes[0].files[0].name);
+    // }
+    ////////
+
+
+
+
+
+
+
+
     for (let i = 0; i < organismName.length; i++) {
         organismNamearray.push(organismName[i].value);
     }
